@@ -126,6 +126,17 @@
         .intro-desktop {
             display: block;
         }
+        .intro-mobile {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .intro-desktop {
+                display: none;
+            }
+            .intro-mobile {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body class="selection-brown">
@@ -380,7 +391,7 @@
 
     <script>
         // Intro handling
-                const introOverlayElement = document.getElementById('intro-overlay');
+        const introOverlayElement = document.getElementById('intro-overlay');
         introOverlayElement.innerHTML = `
             <video class="intro-desktop w-full h-full object-contain bg-white"
                    autoplay
@@ -388,6 +399,13 @@
                    playsinline
                    preload="auto">
                 <source src="assets/desktop.mp4" type="video/mp4">
+            </video>
+            <video class="intro-mobile w-full h-full object-contain bg-white"
+                   autoplay
+                   muted
+                   playsinline
+                   preload="auto">
+                <source src="assets/mobile.mp4" type="video/mp4">
             </video>
         `;
 
@@ -423,4 +441,3 @@
     </script>
 </body>
 </html>
-
