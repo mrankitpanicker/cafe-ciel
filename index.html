@@ -598,6 +598,8 @@
     </div><!-- /.flex.flex-col -->
 
     <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
         function openMenu() {
             window.open(
                 'assets/menu.pdf',
