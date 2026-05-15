@@ -289,6 +289,50 @@
             display: none;
         }
 
+        .cta-gold {
+            background-color: #FAE598;
+            color: #4D312C;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+            display: inline-block;
+        }
+
+        .cta-gold:hover {
+            background-color: #fceea7;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(77, 49, 44, 0.15);
+        }
+
+        .cta-outline {
+            background-color: transparent;
+            color: #4D312C;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            border: 2px solid #4D312C;
+            cursor: pointer;
+            width: fit-content;
+            display: inline-block;
+        }
+
+        .cta-outline:hover {
+            background-color: #4D312C;
+            color: #FAE598;
+            transform: translateY(-1px);
+        }
+
         .img-zoom {
             will-change: transform;
             transform: translateZ(0);
@@ -419,6 +463,18 @@
                                 INDULGENCE. WHETHER YOU'RE STOPPING BY FOR A MORNING COFFEE OR AN AFTERNOON TREAT, CAFE
                                 CIEL X MAGNOLIA BAKERY PROMISES A MEMORABLE FUSION OF FLAVOR AND STYLE.
                             </p>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row gap-4 mt-4">
+                            <!-- Primary CTA for Sit-down Brunch -->
+                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank">
+                                <button class="cta-gold">Book Your Brunch Table</button>
+                            </a>
+
+                            <!-- Secondary CTA for the Menu -->
+                            <button class="cta-outline" onclick="window.open('assets/menu.pdf', 'Menu', 'width=800,height=900')">
+                                View Limited Edition Menu
+                            </button>
                         </div>
                     </div>
 
