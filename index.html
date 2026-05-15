@@ -152,10 +152,8 @@
     <script>
         // Disable keyboard shortcuts for DevTools
         document.onkeydown = function(e) {
-            if (e.keyCode == 123) { // F12
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) {
+            if (e.keyCode == 123) { return false; }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) {
                 return false;
             }
             if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
@@ -163,14 +161,38 @@
             }
         };
 
-        // Anti-debugging loop
-        setInterval(function() {
-            (function() {
-                return false;
-            }
-            ['constructor']('debugger')
-            ['call']());
-        }, 50);
+        // More aggressive DevTools detection
+        (function() {
+            var devtools = { open: false };
+            var threshold = 160;
+            
+            var emitEvent = function(state) {
+                if (state) {
+                    document.body.innerHTML = "<h1>Unauthorized Access</h1><p>Developer Tools are not allowed on this page.</p>";
+                    window.location.reload();
+                }
+            };
+
+            setInterval(function() {
+                var widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                var heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                if (widthThreshold || heightThreshold) {
+                    if (!devtools.open) {
+                        emitEvent(true);
+                    }
+                    devtools.open = true;
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+
+            // Anti-debugger
+            setInterval(function() {
+                (function() {
+                    return false;
+                }['constructor']('debugger')['call']());
+            }, 100);
+        })();
 
         (function() {
 
