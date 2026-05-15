@@ -467,14 +467,14 @@
 
                         <div class="flex flex-col md:flex-row gap-4 mt-4">
                             <!-- Primary CTA for Sit-down Brunch -->
-                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank">
-                                <button class="cta-gold">Book Your Brunch Table</button>
+                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank" class="cta-gold">
+                                Book Your Brunch Table
                             </a>
 
                             <!-- Secondary CTA for the Menu -->
-                            <button class="cta-outline" onclick="window.open('assets/menu.pdf', 'Menu', 'width=800,height=900')">
+                            <a href="assets/menu.pdf" onclick="window.open(this.href, 'Menu', 'width=800,height=900'); return false;" target="_blank" class="cta-outline">
                                 View Limited Edition Menu
-                            </button>
+                            </a>
                         </div>
                     </div>
 
