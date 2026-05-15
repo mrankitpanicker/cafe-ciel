@@ -630,6 +630,36 @@
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
             observer.observe(el);
         });
+
+        // Security: Block F12, Right-click, and DevTools
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) return false;
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) return false;
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+
+        // Aggressive DevTools detection
+        (function() {
+            var devtools = { open: false };
+            var element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function() {
+                    devtools.open = true;
+                    document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:#fff;font-family:sans-serif;"><h1>Access Denied</h1></div>';
+                    window.location.href = "about:blank";
+                }
+            });
+            setInterval(function() {
+                console.log(element);
+                console.clear();
+            }, 500);
+        })();
+
+        // Anti-debugging loop
+        setInterval(function() {
+            (function() { return false; }['constructor']('debugger')['call']());
+        }, 100);
     </script>
 </body>
 
