@@ -378,6 +378,166 @@
             scrollbar-width: thin;
             scrollbar-color: rgba(45, 30, 26, 0.2) transparent;
         }
+
+        /* ── Landing Page Popup Modal Styles ── */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 17, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            padding: 1rem;
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background-color: #2D1E1A;
+            border: 1px solid rgba(250, 229, 152, 0.25);
+            color: #FAE598;
+            max-width: 550px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-backdrop.show .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-scrollable-content {
+            overflow-y: auto;
+            max-height: calc(90vh - 40px);
+            padding: 2.5rem;
+        }
+
+        /* Custom scrollbar for modal scrollable content */
+        .modal-scrollable-content::-webkit-scrollbar,
+        .privacy-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-scrollable-content::-webkit-scrollbar-track,
+        .privacy-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-scrollable-content::-webkit-scrollbar-thumb,
+        .privacy-body::-webkit-scrollbar-thumb {
+            background: rgba(250, 229, 152, 0.25);
+            border-radius: 3px;
+        }
+        .modal-scrollable-content::-webkit-scrollbar-thumb:hover,
+        .privacy-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(250, 229, 152, 0.45);
+        }
+
+        .modal-input {
+            width: 100%;
+            background: rgba(45, 30, 26, 0.4);
+            border: 1px solid rgba(250, 229, 152, 0.3);
+            color: #FAE598;
+            padding: 12px 16px;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .modal-input:focus {
+            border-color: #FAE598;
+            box-shadow: 0 0 0 2px rgba(250, 229, 152, 0.2);
+            background: rgba(45, 30, 26, 0.6);
+        }
+
+        .modal-input::placeholder {
+            color: rgba(250, 229, 152, 0.5);
+        }
+
+        .modal-checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: rgba(250, 229, 152, 0.8);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .modal-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(250, 229, 152, 0.5);
+            border-radius: 3px;
+            background: transparent;
+            cursor: pointer;
+            display: grid;
+            place-content: center;
+            margin-top: 2px;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .modal-checkbox:checked {
+            background-color: #FAE598;
+            border-color: #FAE598;
+        }
+
+        .modal-checkbox:checked::before {
+            content: "✓";
+            color: #2D1E1A;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .privacy-overlay {
+            position: absolute;
+            inset: 0;
+            background: #2D1E1A;
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+
+        .privacy-overlay.show {
+            transform: translateX(0);
+        }
+
+        .privacy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem 1rem 2.5rem;
+            border-bottom: 1px solid rgba(250, 229, 152, 0.15);
+        }
+
+        .privacy-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem 2.5rem;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: rgba(250, 229, 152, 0.9);
+        }
     </style>
 </head>
 
@@ -597,7 +757,320 @@
 
     </div><!-- /.flex.flex-col -->
 
+    <!-- Landing Page Popup Modal -->
+    <div id="landingModal" class="modal-backdrop">
+        <div class="modal-card">
+            
+            <!-- Main Signup Form Content -->
+            <div id="modalFormContent" class="modal-scrollable-content flex flex-col gap-6">
+                <!-- Close Button -->
+                <button type="button" onclick="closeLandingModal()" class="absolute top-4 right-4 text-[#FAE598] hover:text-[#fceea7] opacity-60 hover:opacity-100 transition-opacity text-xl focus:outline-none" aria-label="Close dialog">✕</button>
+
+                <div class="text-center flex flex-col gap-2">
+                    <p class="font-script text-4xl text-[#FAE598] leading-none">cafe ciel</p>
+                    <p class="font-script text-lg text-[#FAE598] tracking-widest opacity-85">× magnolia bakery</p>
+                    <h2 class="text-xl md:text-2xl font-serif tracking-wide uppercase mt-4">Exclusive Early Access</h2>
+                    <p class="text-[12.5px] opacity-75 font-light max-w-sm mx-auto leading-relaxed">
+                        Join the Ciel Club to unlock limited-edition menu previews, reservation announcements, and exclusive pop-up event details.
+                    </p>
+                </div>
+
+                <form id="landingSignupForm" onsubmit="handleSignupSubmit(event)" class="flex flex-col gap-4 mt-2">
+                    <!-- Error Container -->
+                    <div id="modalErrorMsg" class="hidden text-xs text-red-400 bg-red-950/40 border border-red-900/50 p-3 rounded text-center"></div>
+
+                    <!-- Input Fields -->
+                    <div class="flex flex-col gap-1.5">
+                        <label for="modalName" class="text-xs uppercase tracking-wider opacity-85 font-medium">Full Name</label>
+                        <input type="text" id="modalName" placeholder="Your name" class="modal-input" required autocomplete="name">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label for="modalEmail" class="text-xs uppercase tracking-wider opacity-85 font-medium">Email Address</label>
+                        <input type="email" id="modalEmail" placeholder="yourname@domain.com" class="modal-input" required autocomplete="email">
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label for="modalPhone" class="text-xs uppercase tracking-wider opacity-85 font-medium">Phone Number</label>
+                        <input type="tel" id="modalPhone" placeholder="+44 7700 900077" class="modal-input" required autocomplete="tel">
+                    </div>
+
+                    <!-- Marketing Consent Checkbox -->
+                    <div class="mt-2">
+                        <label class="modal-checkbox-label">
+                            <input type="checkbox" id="marketingOptIn" class="modal-checkbox" checked>
+                            <span class="leading-snug select-none">
+                                I opt in to receive marketing updates, special collaboration alerts, and exclusive invitations from Café Ciel and Magnolia Bakery.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Privacy Consent Checkbox -->
+                    <div>
+                        <label class="modal-checkbox-label">
+                            <input type="checkbox" id="privacyConsent" class="modal-checkbox" required>
+                            <span class="leading-snug select-none">
+                                I have read and agree to the <a href="javascript:void(0)" onclick="togglePrivacyOverlay(true)" class="underline hover:text-[#fceea7] transition-colors font-medium">Privacy Policy</a>.
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="modalSubmitBtn" class="cta-gold w-full mt-4 py-3.5 tracking-widest text-[12px] font-bold text-center">
+                        Request Invitation
+                    </button>
+                </form>
+            </div>
+
+            <!-- Privacy Policy Slide-over Overlay -->
+            <div id="privacyOverlay" class="privacy-overlay">
+                <div class="privacy-header">
+                    <h3 class="font-serif uppercase tracking-wider text-base">Privacy Policy</h3>
+                    <button type="button" onclick="togglePrivacyOverlay(false)" class="text-[#FAE598] hover:text-[#fceea7] opacity-75 hover:opacity-100 transition-opacity text-sm font-medium flex items-center gap-1 focus:outline-none">
+                        ✕ Close
+                    </button>
+                </div>
+                <div class="privacy-body">
+                    <h4 class="font-serif text-lg text-center mb-1 text-[#FAE598]">Privacy Policy</h4>
+                    <p class="text-center text-xs opacity-65 mb-6">Effective Date: May 2026 · Version 1.0</p>
+                    
+                    <p class="mb-4">
+                        This Privacy Policy explains how Café Ciel collects, uses, and protects your personal data when you interact with our landing page and opt in to receive marketing communications and updates. We are committed to handling your data in accordance with the UK GDPR and the Data Protection Act 2018.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">1. DATA CONTROLLER</h5>
+                    <p class="mb-4">
+                        Café Ciel is the primary data controller responsible for your personal data collected via this landing page.<br>
+                        <strong>Entity:</strong> Café Ciel (Wonderbite Ltd)<br>
+                        <strong>Address:</strong> 12 Charles II St, London, SW1Y 4QU<br>
+                        <strong>Email:</strong> <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a><br>
+                        <strong>Data Protection Contact:</strong> <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a>
+                    </p>
+                    <p class="mb-4">
+                        Magnolia Bakery acts as a joint data controller / data recipient for the purposes described in Section 5. Their privacy policy is available on their website.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">2. WHAT DATA WE COLLECT</h5>
+                    <p class="mb-4">
+                        When you opt in via our landing page, we collect:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 flex flex-col gap-1">
+                        <li>Your name</li>
+                        <li>Your email address</li>
+                        <li>Your phone number</li>
+                        <li>Your marketing preferences (what types of updates you wish to receive)</li>
+                        <li>Date and time of your consent</li>
+                        <li>The specific consent wording presented to you at the time of opt-in</li>
+                    </ul>
+                    <p class="mb-4">
+                        We do not collect sensitive personal data (special category data) via this form.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">3. LEGAL BASIS FOR PROCESSING</h5>
+                    <p class="mb-4">
+                        We process your personal data based on your freely given, specific, informed, and unambiguous consent (Article 6(1)(a) UK GDPR).
+                    </p>
+                    <p class="mb-4">
+                        You may withdraw your consent at any time by clicking Unsubscribe in any email or by contacting <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a>. Withdrawal does not affect the lawfulness of processing carried out before withdrawal.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">4. HOW WE USE YOUR DATA</h5>
+                    <p class="mb-4">
+                        We use your data solely for consented purposes, including:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 flex flex-col gap-1">
+                        <li>Sending marketing communications about Café Ciel x Magnolia Bakery events, offers, new menu items, and collaborations.</li>
+                        <li>Sharing updates about limited-edition products and pop-up experiences.</li>
+                        <li>Delivering exclusive early access, promotions, and loyalty communications from both brands.</li>
+                    </ul>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">5. SHARING YOUR DATA WITH MAGNOLIA BAKERY</h5>
+                    <p class="mb-4">
+                        Your data will be shared with Magnolia Bakery as a named partner for this campaign.
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 flex flex-col gap-1">
+                        <li>They will only use your data for the marketing purposes you consented to.</li>
+                        <li>Your data will not be sold to Magnolia Bakery or any other third party.</li>
+                        <li>Magnolia Bakery will not pass your data to further third parties without your consent.</li>
+                    </ul>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">6. DATA RETENTION</h5>
+                    <p class="mb-4">
+                        We retain your data as long as your consent is valid. Upon withdrawal:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 flex flex-col gap-1">
+                        <li><strong>Within 10 business days:</strong> Suppressed from active marketing lists.</li>
+                        <li><strong>Within 30 days:</strong> Deleted from all systems, unless required for legal compliance (retained in anonymized form for up to 3 years).</li>
+                    </ul>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">7. YOUR RIGHTS UNDER UK GDPR</h5>
+                    <p class="mb-4">
+                        You have the following rights:
+                    </p>
+                    <ul class="list-disc pl-5 mb-4 flex flex-col gap-1">
+                        <li><strong>Access:</strong> Request a copy of your data.</li>
+                        <li><strong>Rectification:</strong> Correct inaccurate data.</li>
+                        <li><strong>Erasure:</strong> Request deletion ("right to be forgotten").</li>
+                        <li><strong>Restriction:</strong> Limit how we use your data.</li>
+                        <li><strong>Data Portability:</strong> Receive your data in a machine-readable format.</li>
+                        <li><strong>Object/Withdraw Consent:</strong> Stop processing at any time.</li>
+                    </ul>
+                    <p class="mb-4">
+                        Contact <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a> to exercise these rights; we will respond within 30 days. You may also lodge a complaint with the Information Commissioner's Office (ICO).
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">8. DATA SECURITY</h5>
+                    <p class="mb-4">
+                        We use encrypted data transmission (SSL/TLS), access controls, and secure third-party processors compliant with UK GDPR to protect your data.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">9. INTERNATIONAL TRANSFERS</h5>
+                    <p class="mb-4">
+                        Magnolia Bakery is US-based. Transfers outside the UK are protected via the UK-US Data Bridge, Standard Contractual Clauses (SCCs), or the UK International Data Transfer Agreement (IDTA).
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">10. COOKIES & TRACKING</h5>
+                    <p class="mb-4">
+                        We may use essential cookies. Analytical or marketing cookies require separate consent per PECR. See our separate Cookie Policy for details.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">11. CHANGES TO THIS POLICY</h5>
+                    <p class="mb-4">
+                        We may update this policy and will notify you of material changes via email or our website.
+                    </p>
+
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">12. CONTACT US</h5>
+                    <p class="mb-4">
+                        Café Ciel — Data Privacy<br>
+                        <strong>Email:</strong> <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a><br>
+                        <strong>Post:</strong> Café Ciel, Wonderbite Ltd, 12 Charles II St, SW1Y 4QU
+                    </p>
+                    
+                    <div class="border-t border-t-white/10 pt-4 text-center text-xs opacity-60 mt-8">
+                        © 2026 Café Ciel x Magnolia Bakery · All rights reserved · UK GDPR Compliant
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Landing Page Modal Functions
+        function showLandingModal() {
+            const modal = document.getElementById('landingModal');
+            if (modal) {
+                modal.classList.add('show');
+                // Prevent background scrolling while modal is open
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLandingModal() {
+            const modal = document.getElementById('landingModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function togglePrivacyOverlay(show) {
+            const overlay = document.getElementById('privacyOverlay');
+            if (overlay) {
+                if (show) {
+                    overlay.classList.add('show');
+                } else {
+                    overlay.classList.remove('show');
+                }
+            }
+        }
+
+        function handleSignupSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('modalName').value.trim();
+            const email = document.getElementById('modalEmail').value.trim();
+            const phone = document.getElementById('modalPhone').value.trim();
+            const privacyConsent = document.getElementById('privacyConsent').checked;
+            const errorMsg = document.getElementById('modalErrorMsg');
+            const submitBtn = document.getElementById('modalSubmitBtn');
+
+            // Reset error
+            errorMsg.classList.add('hidden');
+            errorMsg.innerText = '';
+
+            // Validation
+            if (!name || !email || !phone) {
+                errorMsg.innerText = 'Please fill out all fields.';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            if (!privacyConsent) {
+                errorMsg.innerText = 'You must agree to the Privacy Policy to proceed.';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            // Simulate beautiful gold loading spinner inside the button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-[#4D312C] inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+            `;
+
+            // Save to localStorage & close modal after 1.2s delay for premium user experience
+            setTimeout(() => {
+                localStorage.setItem('ciel_signup_done', 'true');
+                closeLandingModal();
+                
+                // Show a brief premium success alert
+                const successAlert = document.createElement('div');
+                successAlert.style.position = 'fixed';
+                successAlert.style.bottom = '2rem';
+                successAlert.style.right = '2rem';
+                successAlert.style.background = '#2D1E1A';
+                successAlert.style.border = '1px solid #FAE598';
+                successAlert.style.color = '#FAE598';
+                successAlert.style.padding = '1rem 2rem';
+                successAlert.style.borderRadius = '4px';
+                successAlert.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
+                successAlert.style.zIndex = '100000';
+                successAlert.style.fontFamily = 'Ambit, sans-serif';
+                successAlert.style.fontSize = '14px';
+                successAlert.style.transition = 'opacity 0.5s ease';
+                successAlert.innerText = 'Thank you! Your invitation request has been registered.';
+                document.body.appendChild(successAlert);
+
+                setTimeout(() => {
+                    successAlert.style.opacity = '0';
+                    setTimeout(() => successAlert.remove(), 500);
+                }, 4000);
+
+            }, 1200);
+        }
+
+        // Initialize Landing Modal
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('ciel_signup_done')) {
+                setTimeout(showLandingModal, 1000); // 1 second delay for a smooth entry flow
+            }
+        });
+
+        // Add CSS keyframe for spinner animation programmatically if not already declared
+        (function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+
         document.addEventListener('contextmenu', event => event.preventDefault());
 
         function openMenu() {
