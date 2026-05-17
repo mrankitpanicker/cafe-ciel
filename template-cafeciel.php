@@ -649,7 +649,7 @@ if (!defined('ABSPATH')) {
                         <span class="tracking-[0.15em] font-bold text-[12px] md:text-sm">Join the
                             Waitlist</span>
                     </button>
-                    <a href="https://mrankitpanicker.github.io/cafe-ciel/assets/menu.pdf" onclick="openMenu(); return false;" target="_blank" class="brush-btn text-white">
+                    <a href="javascript:void(0)" onclick="showMenuModal()" class="brush-btn text-white">
                         <svg viewBox="0 0 500 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M 46 26 C 78 22,170 21,250 21 C 330 21,418 22,454 26 C 458 27,460 31,459 36 C 460 52,460 71,459 89 C 458 96,455 100,449 101 C 412 104,325 105,250 105 C 175 105,88 104,51 101 C 45 100,42 96,41 89 C 40 71,40 52,41 36 C 40 31,42 27,46 26 Z"
@@ -870,6 +870,32 @@ if (!defined('ABSPATH')) {
                     </div>
                     <div class="relative w-full max-w-[300px] md:max-w-[330px] overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
                         <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/takeaway1.png" alt="Café Ciel Takeaway Menu Page 2" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu Popup Modal -->
+    <div id="menuModal" class="modal-backdrop">
+        <div class="takeaway-modal-card">
+            <!-- Close Button -->
+            <button type="button" onclick="closeMenuModal()" class="absolute top-4 right-4 text-[#4D312C] hover:text-[#2D1E1A] opacity-60 hover:opacity-100 transition-opacity text-2xl font-bold focus:outline-none z-50 bg-[#FAF5E6]/80 backdrop-blur-sm w-10 h-10 rounded-full flex items-center justify-center shadow-sm" aria-label="Close dialog">✕</button>
+
+            <!-- Branded Logo Header Area -->
+            <div class="w-full pt-8 pb-3 px-6 flex flex-col items-center justify-center flex-shrink-0 border-b border-[#4D312C]/10">
+                <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/hero.png" alt="Café Ciel Logo" class="h-16 w-auto object-contain mb-2">
+                <h2 class="text-2xl font-serif tracking-wide text-[#4D312C]">Menu</h2>
+            </div>
+            
+            <!-- Scrollable Content with Stacked/Side-by-Side Menu Pages -->
+            <div class="modal-scrollable-content flex flex-col gap-6 pt-6 pb-12 px-6 md:px-10">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-start">
+                    <div class="relative w-full max-w-[300px] md:max-w-[330px] overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/menuu.png" alt="Café Ciel Menu Page 1" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                    <div class="relative w-full max-w-[300px] md:max-w-[330px] overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/menuu1.png" alt="Café Ciel Menu Page 2" class="w-full h-auto object-contain" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1116,6 +1142,23 @@ if (!defined('ABSPATH')) {
             }
         }
 
+        // Main Menu Modal Functions
+        function showMenuModal() {
+            const modal = document.getElementById('menuModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenuModal() {
+            const modal = document.getElementById('menuModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Close takeaway modal if backdrop is clicked
         document.addEventListener('DOMContentLoaded', () => {
             const takeawayModal = document.getElementById('takeawayModal');
@@ -1123,6 +1166,15 @@ if (!defined('ABSPATH')) {
                 takeawayModal.addEventListener('click', function(event) {
                     if (event.target === this) {
                         closeTakeawayModal();
+                    }
+                });
+            }
+
+            const menuModal = document.getElementById('menuModal');
+            if (menuModal) {
+                menuModal.addEventListener('click', function(event) {
+                    if (event.target === this) {
+                        closeMenuModal();
                     }
                 });
             }
