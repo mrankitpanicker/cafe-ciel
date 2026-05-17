@@ -402,9 +402,9 @@
         }
 
         .modal-card {
-            background-color: #2D1E1A;
-            border: 1px solid rgba(250, 229, 152, 0.25);
-            color: #FAE598;
+            background-color: #FAE598;
+            border: 1px solid rgba(77, 49, 44, 0.25);
+            color: #4D312C;
             max-width: 550px;
             width: 100%;
             border-radius: 8px;
@@ -439,19 +439,19 @@
         }
         .modal-scrollable-content::-webkit-scrollbar-thumb,
         .privacy-body::-webkit-scrollbar-thumb {
-            background: rgba(250, 229, 152, 0.25);
+            background: rgba(77, 49, 44, 0.25);
             border-radius: 3px;
         }
         .modal-scrollable-content::-webkit-scrollbar-thumb:hover,
         .privacy-body::-webkit-scrollbar-thumb:hover {
-            background: rgba(250, 229, 152, 0.45);
+            background: rgba(77, 49, 44, 0.45);
         }
 
         .modal-input {
             width: 100%;
-            background: rgba(45, 30, 26, 0.4);
-            border: 1px solid rgba(250, 229, 152, 0.3);
-            color: #FAE598;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(77, 49, 44, 0.25);
+            color: #4D312C;
             padding: 12px 16px;
             border-radius: 4px;
             outline: none;
@@ -460,13 +460,13 @@
         }
 
         .modal-input:focus {
-            border-color: #FAE598;
-            box-shadow: 0 0 0 2px rgba(250, 229, 152, 0.2);
-            background: rgba(45, 30, 26, 0.6);
+            border-color: #4D312C;
+            box-shadow: 0 0 0 2px rgba(77, 49, 44, 0.15);
+            background: #ffffff;
         }
 
         .modal-input::placeholder {
-            color: rgba(250, 229, 152, 0.5);
+            color: rgba(77, 49, 44, 0.5);
         }
 
         .modal-checkbox-label {
@@ -474,7 +474,7 @@
             align-items: flex-start;
             gap: 10px;
             font-size: 13px;
-            color: rgba(250, 229, 152, 0.8);
+            color: rgba(77, 49, 44, 0.85);
             cursor: pointer;
             user-select: none;
         }
@@ -483,7 +483,7 @@
             appearance: none;
             width: 18px;
             height: 18px;
-            border: 1px solid rgba(250, 229, 152, 0.5);
+            border: 1px solid rgba(77, 49, 44, 0.4);
             border-radius: 3px;
             background: transparent;
             cursor: pointer;
@@ -495,13 +495,13 @@
         }
 
         .modal-checkbox:checked {
-            background-color: #FAE598;
-            border-color: #FAE598;
+            background-color: #4D312C;
+            border-color: #4D312C;
         }
 
         .modal-checkbox:checked::before {
             content: "✓";
-            color: #2D1E1A;
+            color: #FAE598;
             font-size: 12px;
             font-weight: bold;
         }
@@ -509,7 +509,7 @@
         .privacy-overlay {
             position: absolute;
             inset: 0;
-            background: #2D1E1A;
+            background: #FAE598;
             z-index: 10000;
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -527,7 +527,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 2.5rem 1rem 2.5rem;
-            border-bottom: 1px solid rgba(250, 229, 152, 0.15);
+            border-bottom: 1px solid rgba(77, 49, 44, 0.15);
         }
 
         .privacy-body {
@@ -536,7 +536,30 @@
             padding: 2rem 2.5rem;
             font-size: 13.5px;
             line-height: 1.6;
-            color: rgba(250, 229, 152, 0.9);
+            color: rgba(77, 49, 44, 0.95);
+        }
+
+        .modal-submit-btn {
+            background-color: #4D312C;
+            color: #FAE598;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .modal-submit-btn:hover {
+            background-color: #38201D;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(77, 49, 44, 0.25);
         }
     </style>
 </head>
@@ -764,12 +787,13 @@
             <!-- Main Signup Form Content -->
             <div id="modalFormContent" class="modal-scrollable-content flex flex-col gap-6">
                 <!-- Close Button -->
-                <button type="button" onclick="closeLandingModal()" class="absolute top-4 right-4 text-[#FAE598] hover:text-[#fceea7] opacity-60 hover:opacity-100 transition-opacity text-xl focus:outline-none" aria-label="Close dialog">✕</button>
+                <button type="button" onclick="closeLandingModal()" class="absolute top-4 right-4 text-[#4D312C] hover:text-[#2D1E1A] opacity-60 hover:opacity-100 transition-opacity text-xl focus:outline-none" aria-label="Close dialog">✕</button>
 
                 <div class="text-center flex flex-col gap-2">
-                    <p class="font-script text-4xl text-[#FAE598] leading-none">cafe ciel</p>
-                    <p class="font-script text-lg text-[#FAE598] tracking-widest opacity-85">× magnolia bakery</p>
-                    <h2 class="text-xl md:text-2xl font-serif tracking-wide uppercase mt-4">Exclusive Early Access</h2>
+                    <div class="flex justify-center mb-1">
+                        <img src="assets/images/hero.png" alt="Café Ciel" class="h-16 md:h-20 w-auto object-contain">
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-serif tracking-wide uppercase mt-2">Exclusive Early Access</h2>
                     <p class="text-[12.5px] opacity-75 font-light max-w-sm mx-auto leading-relaxed">
                         Join the Ciel Club to unlock limited-edition menu previews, reservation announcements, and exclusive pop-up event details.
                     </p>
@@ -810,13 +834,13 @@
                         <label class="modal-checkbox-label">
                             <input type="checkbox" id="privacyConsent" class="modal-checkbox" required>
                             <span class="leading-snug select-none">
-                                I have read and agree to the <a href="javascript:void(0)" onclick="togglePrivacyOverlay(true)" class="underline hover:text-[#fceea7] transition-colors font-medium">Privacy Policy</a>.
+                                I have read and agree to the <a href="javascript:void(0)" onclick="togglePrivacyOverlay(true)" class="underline hover:text-[#2D1E1A] transition-colors font-medium">Privacy Policy</a>.
                             </span>
                         </label>
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" id="modalSubmitBtn" class="cta-gold w-full mt-4 py-3.5 tracking-widest text-[12px] font-bold text-center">
+                    <button type="submit" id="modalSubmitBtn" class="modal-submit-btn w-full mt-4 py-3.5 tracking-widest text-[12px] font-bold text-center">
                         Request Invitation
                     </button>
                 </form>
@@ -826,19 +850,19 @@
             <div id="privacyOverlay" class="privacy-overlay">
                 <div class="privacy-header">
                     <h3 class="font-serif uppercase tracking-wider text-base">Privacy Policy</h3>
-                    <button type="button" onclick="togglePrivacyOverlay(false)" class="text-[#FAE598] hover:text-[#fceea7] opacity-75 hover:opacity-100 transition-opacity text-sm font-medium flex items-center gap-1 focus:outline-none">
+                    <button type="button" onclick="togglePrivacyOverlay(false)" class="text-[#4D312C] hover:text-[#2D1E1A] opacity-75 hover:opacity-100 transition-opacity text-sm font-medium flex items-center gap-1 focus:outline-none">
                         ✕ Close
                     </button>
                 </div>
                 <div class="privacy-body">
-                    <h4 class="font-serif text-lg text-center mb-1 text-[#FAE598]">Privacy Policy</h4>
+                    <h4 class="font-serif text-lg text-center mb-1 text-[#4D312C]">Privacy Policy</h4>
                     <p class="text-center text-xs opacity-65 mb-6">Effective Date: May 2026 · Version 1.0</p>
                     
                     <p class="mb-4">
                         This Privacy Policy explains how Café Ciel collects, uses, and protects your personal data when you interact with our landing page and opt in to receive marketing communications and updates. We are committed to handling your data in accordance with the UK GDPR and the Data Protection Act 2018.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">1. DATA CONTROLLER</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">1. DATA CONTROLLER</h5>
                     <p class="mb-4">
                         Café Ciel is the primary data controller responsible for your personal data collected via this landing page.<br>
                         <strong>Entity:</strong> Café Ciel (Wonderbite Ltd)<br>
@@ -850,7 +874,7 @@
                         Magnolia Bakery acts as a joint data controller / data recipient for the purposes described in Section 5. Their privacy policy is available on their website.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">2. WHAT DATA WE COLLECT</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">2. WHAT DATA WE COLLECT</h5>
                     <p class="mb-4">
                         When you opt in via our landing page, we collect:
                     </p>
@@ -866,7 +890,7 @@
                         We do not collect sensitive personal data (special category data) via this form.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">3. LEGAL BASIS FOR PROCESSING</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">3. LEGAL BASIS FOR PROCESSING</h5>
                     <p class="mb-4">
                         We process your personal data based on your freely given, specific, informed, and unambiguous consent (Article 6(1)(a) UK GDPR).
                     </p>
@@ -874,7 +898,7 @@
                         You may withdraw your consent at any time by clicking Unsubscribe in any email or by contacting <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a>. Withdrawal does not affect the lawfulness of processing carried out before withdrawal.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">4. HOW WE USE YOUR DATA</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">4. HOW WE USE YOUR DATA</h5>
                     <p class="mb-4">
                         We use your data solely for consented purposes, including:
                     </p>
@@ -884,7 +908,7 @@
                         <li>Delivering exclusive early access, promotions, and loyalty communications from both brands.</li>
                     </ul>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">5. SHARING YOUR DATA WITH MAGNOLIA BAKERY</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">5. SHARING YOUR DATA WITH MAGNOLIA BAKERY</h5>
                     <p class="mb-4">
                         Your data will be shared with Magnolia Bakery as a named partner for this campaign.
                     </p>
@@ -894,7 +918,7 @@
                         <li>Magnolia Bakery will not pass your data to further third parties without your consent.</li>
                     </ul>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">6. DATA RETENTION</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">6. DATA RETENTION</h5>
                     <p class="mb-4">
                         We retain your data as long as your consent is valid. Upon withdrawal:
                     </p>
@@ -903,7 +927,7 @@
                         <li><strong>Within 30 days:</strong> Deleted from all systems, unless required for legal compliance (retained in anonymized form for up to 3 years).</li>
                     </ul>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">7. YOUR RIGHTS UNDER UK GDPR</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">7. YOUR RIGHTS UNDER UK GDPR</h5>
                     <p class="mb-4">
                         You have the following rights:
                     </p>
@@ -919,27 +943,27 @@
                         Contact <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a> to exercise these rights; we will respond within 30 days. You may also lodge a complaint with the Information Commissioner's Office (ICO).
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">8. DATA SECURITY</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">8. DATA SECURITY</h5>
                     <p class="mb-4">
                         We use encrypted data transmission (SSL/TLS), access controls, and secure third-party processors compliant with UK GDPR to protect your data.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">9. INTERNATIONAL TRANSFERS</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">9. INTERNATIONAL TRANSFERS</h5>
                     <p class="mb-4">
                         Magnolia Bakery is US-based. Transfers outside the UK are protected via the UK-US Data Bridge, Standard Contractual Clauses (SCCs), or the UK International Data Transfer Agreement (IDTA).
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">10. COOKIES & TRACKING</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">10. COOKIES & TRACKING</h5>
                     <p class="mb-4">
                         We may use essential cookies. Analytical or marketing cookies require separate consent per PECR. See our separate Cookie Policy for details.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">11. CHANGES TO THIS POLICY</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">11. CHANGES TO THIS POLICY</h5>
                     <p class="mb-4">
                         We may update this policy and will notify you of material changes via email or our website.
                     </p>
 
-                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#FAE598]">12. CONTACT US</h5>
+                    <h5 class="font-serif text-sm uppercase tracking-wider mt-6 mb-2 text-[#4D312C]">12. CONTACT US</h5>
                     <p class="mb-4">
                         Café Ciel — Data Privacy<br>
                         <strong>Email:</strong> <a href="mailto:hello@cafeciel.com" class="underline">hello@cafeciel.com</a><br>
@@ -1014,7 +1038,7 @@
             // Simulate beautiful gold loading spinner inside the button
             submitBtn.disabled = true;
             submitBtn.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-[#4D312C] inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-[#FAE598] inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
