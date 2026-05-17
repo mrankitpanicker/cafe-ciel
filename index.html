@@ -609,74 +609,85 @@
                 </footer>
             </section>
 
-            <!-- ABOUT -->
-            <section class="relative w-full py-20 md:py-32 px-6 md:px-20 overflow-hidden">
+            <!-- ABOUT / EXPERIENCE SECTION -->
+            <section class="relative w-full py-20 md:py-32 px-6 md:px-20 overflow-hidden bg-[#F2E8B1]/40">
                 <!-- Background Overlay -->
                 <div class="absolute inset-0 bg-[#F2E8B1] opacity-85 pointer-events-none"></div>
-                <div
-                    class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-12 md:gap-24 items-start">
+                
+                <div class="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center mb-16 md:mb-24">
+                    <!-- Title -->
+                    <h2 class="font-serif text-3xl md:text-5xl text-[#4D312C] tracking-wide mb-6 leading-tight uppercase">
+                        Two icons. One address. Three weeks only.
+                    </h2>
+                    <!-- Intro Paragraph -->
+                    <p class="text-[14px] md:text-[16px] text-[#4D312C] opacity-90 leading-relaxed font-light max-w-3xl">
+                        Café Ciel and Magnolia Bakery are coming together for a limited collaboration at The OWO, one of the city's most extraordinary addresses. From 19 May to 10 June, expect a limited edition brunch menu, exclusive puddings you won't find anywhere else, and iced drinks that were made for summer. Whether you're joining us at the table or stopping by the kiosk, this is three weeks you won't want to miss.
+                    </p>
+                </div>
 
-                    <div class="reveal flex flex-col gap-10 text-[#4D312C]">
-                        <div class="flex flex-col gap-8">
-                            <p
-                                class="text-[12px] md:text-[14px] leading-relaxed tracking-widest font-light uppercase text-justify">
-                                CAFE CIEL IS DELIGHTED TO ANNOUNCE AN EXCLUSIVE COLLABORATION WITH THE ICONIC MAGNOLIA
-                                BAKERY, BRINGING TOGETHER REFINED CAFE CULTURE AND WORLD RENOWNED CLASSIC DESSERTS. THIS
-                                LIMITED EDITION PARTNERSHIP BLENDS CAFE CIEL'S ELEGANT ATMOSPHERE AND ARTISANAL
-                                BEVERAGES WITH MAGNOLIA'S SIGNATURE SWEET CREATIONS, OFFERING GUESTS A TRULY INDULGENT
-                                EXPERIENCE.
-                            </p>
-                            <p
-                                class="text-[12px] md:text-[14px] leading-relaxed tracking-widest font-light uppercase text-justify">
-                                AT THE HEART OF THE COLLABORATION IS A CURATED MENU THAT REIMAGINES MAGNOLIA BAKERY'S
-                                MOST BELOVED TREATS THROUGH CAFE CIEL'S CONTEMPORARY LENS. GUESTS CAN ENJOY PERFECTLY
-                                PAIRED COFFEE AND DESSERT COMBINATIONS, FROM VELVETY LATTES ALONGSIDE THE FAMOUS BANANA
-                                PUDDING TO DELICATE PASTRIES INSPIRED BY MAGNOLIA'S CLASSIC CUPCAKES.
-                            </p>
-                            <p
-                                class="text-[12px] md:text-[14px] leading-relaxed tracking-widest font-light uppercase text-justify">
-                                THE SPACE ITSELF WILL REFLECT THE UNION OF BOTH BRANDS COMBINING CAFE CIEL'S SERENE,
-                                MODERN AESTHETIC WITH MAGNOLIA BAKERY'S NOSTALGIC CHARM. EXPECT SOFT PASTEL TONES,
-                                INVITING TEXTURES, AND A WARM, WELCOMING AMBIANCE DESIGNED FOR BOTH CASUAL VISITS AND
-                                SPECIAL MOMENTS.
-                            </p>
-                            <p
-                                class="text-[12px] md:text-[14px] leading-relaxed tracking-widest font-light uppercase text-justify">
-                                THIS COLLABORATION CELEBRATES CRAFTSMANSHIP, QUALITY INGREDIENTS, AND THE JOY OF SIMPLE
-                                INDULGENCE. WHETHER YOU'RE STOPPING BY FOR A MORNING COFFEE OR AN AFTERNOON TREAT, CAFE
-                                CIEL X MAGNOLIA BAKERY PROMISES A MEMORABLE FUSION OF FLAVOR AND STYLE.
-                            </p>
+                <!-- Two-Column Grid for the Two Experiences -->
+                <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-stretch">
+                    
+                    <!-- Left Card: The Full Experience -->
+                    <div class="reveal flex flex-col bg-white/40 backdrop-blur-sm border border-[#4D312C]/10 rounded-2xl p-8 md:p-10 text-[#4D312C] justify-between shadow-lg">
+                        <div class="flex flex-col gap-6">
+                            <!-- Image at the top of the card -->
+                            <div class="relative overflow-hidden rounded-xl aspect-[21/9] mb-4 shadow-md bg-white/50">
+                                <img src="assets/images/cafe 1.jpg" class="w-full h-full object-cover img-zoom" alt="Freshly served brunch dishes at Café Ciel London">
+                            </div>
+                            <h3 class="font-serif text-2xl md:text-3xl tracking-wide uppercase">The Full Experience</h3>
+                            
+                            <div class="flex flex-col gap-4 text-[13px] md:text-[14px] leading-relaxed font-light text-justify">
+                                <p>
+                                    Settle in. The limited edition brunch menu brings together Café Ciel favourites and Magnolia Bakery classics in a way that has never been done before. Think Banoffee French Toast, Pudding Affogato, Cinnamon Swirl Pancakes and a Carrot Lox Bagel, alongside exclusive puddings created just for this collaboration.
+                                </p>
+                                <p class="opacity-80 italic">
+                                    Our outdoor tables are allocated and prioritised for guests with reservations, subject to weather. Walk-in outdoor seating cannot be guaranteed.
+                                </p>
+                                <p class="font-bold tracking-wider uppercase text-[11px] md:text-xs">
+                                    Reservations are recommended. Book your table below.
+                                </p>
+                            </div>
                         </div>
-
-                        <div class="flex flex-col md:flex-row gap-4 mt-4">
+                        
+                        <div class="mt-8 flex justify-center">
                             <!-- Primary CTA for Sit-down Brunch -->
-                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank" class="cta-gold">
-                                Book Your Brunch Table
+                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank" class="cta-gold w-full text-center">
+                                Book a Table
                             </a>
+                        </div>
+                    </div>
 
+                    <!-- Right Card: No Reservation Required -->
+                    <div class="reveal flex flex-col bg-white/40 backdrop-blur-sm border border-[#4D312C]/10 rounded-2xl p-8 md:p-10 text-[#4D312C] justify-between shadow-lg" data-delay="0.2">
+                        <div class="flex flex-col gap-6">
+                            <!-- Image at the top of the card -->
+                            <div class="relative overflow-hidden rounded-xl aspect-[21/9] mb-4 shadow-md bg-white/50">
+                                <img src="assets/images/cafe 2.jpg" class="w-full h-full object-cover img-zoom" alt="Magnolia Bakery pop-up floral installation at The OWO London for Chelsea Flower Show">
+                            </div>
+                            <h3 class="font-serif text-2xl md:text-3xl tracking-wide uppercase">No Reservation Required</h3>
+                            
+                            <div class="flex flex-col gap-4 text-[13px] md:text-[14px] leading-relaxed font-light text-justify">
+                                <p>
+                                    Not staying for brunch? Our outdoor kiosk is open Tuesday to Sunday, 10am – 7pm for takeaway only. Pick up the classic banana pudding, the limited edition sticky toffee pudding — exclusively made for Café Ciel — or treat yourself to an iced matcha or cold brew, topped with Magnolia Bakery pudding.
+                                </p>
+                                <p class="opacity-80 italic">
+                                    Quantities are limited, so we recommend coming early to avoid disappointment.
+                                </p>
+                                <p class="font-bold tracking-wider uppercase text-[11px] md:text-xs">
+                                    Find us outside. No booking needed. Just turn up.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex justify-center">
                             <!-- Secondary CTA for the Menu -->
-                            <a href="assets/menu.pdf" onclick="window.open(this.href, 'Menu', 'width=800,height=900'); return false;" target="_blank" class="cta-outline">
-                                View Limited Edition Menu
+                            <a href="assets/menu.pdf" onclick="window.open(this.href, 'Menu', 'width=800,height=900'); return false;" target="_blank" class="cta-outline w-full text-center">
+                                View takeaway menu
                             </a>
                         </div>
                     </div>
 
-                    <div class="reveal flex flex-col gap-8 w-full" data-delay="0.2">
-                        <div class="relative group overflow-hidden rounded-lg shadow-xl aspect-[21/9] bg-white/50">
-                            <img src="assets/images/cafe 1.jpg"
-                                class="img-zoom w-full h-full object-cover" alt="Freshly served brunch dishes at Café Ciel London" loading="lazy" decoding="async">
-                            <div
-                                class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg pointer-events-none">
-                            </div>
-                        </div>
-                        <div class="relative group overflow-hidden rounded-lg shadow-xl aspect-[21/9] bg-white/50">
-                            <img src="assets/images/cafe 2.jpg"
-                                class="img-zoom w-full h-full object-cover" alt="Magnolia Bakery pop-up floral installation at The OWO London for Chelsea Flower Show" loading="lazy" decoding="async">
-                            <div
-                                class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg pointer-events-none">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
