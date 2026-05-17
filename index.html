@@ -663,14 +663,14 @@
 
                     <div class="reveal flex flex-col gap-8 w-full" data-delay="0.2">
                         <div class="relative group overflow-hidden rounded-lg shadow-xl aspect-[21/9] bg-white/50">
-                            <img src="assets/images/cafe%201.jpg"
+                            <img src="assets/images/cafe 1.jpg"
                                 class="img-zoom w-full h-full object-cover" alt="Freshly served brunch dishes at Café Ciel London" loading="lazy" decoding="async">
                             <div
                                 class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg pointer-events-none">
                             </div>
                         </div>
                         <div class="relative group overflow-hidden rounded-lg shadow-xl aspect-[21/9] bg-white/50">
-                            <img src="assets/images/cafe%202.jpg"
+                            <img src="assets/images/cafe 2.jpg"
                                 class="img-zoom w-full h-full object-cover" alt="Magnolia Bakery pop-up floral installation at The OWO London for Chelsea Flower Show" loading="lazy" decoding="async">
                             <div
                                 class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg pointer-events-none">
@@ -703,7 +703,7 @@
 
                     <div class="reveal-right relative group w-full self-start">
                         <div class="relative overflow-hidden rounded-2xl shadow-2xl aspect-[21/9] bg-white/50">
-                            <img src="assets/images/cafe%203.jpg"
+                            <img src="assets/images/cafe 3.jpg"
                                 class="img-zoom w-full h-full object-cover" alt="London dining at Café Ciel, The OWO" loading="lazy" decoding="async">
                             <div
                                 class="absolute inset-0 bg-[#4D312C]/5 group-hover:bg-transparent transition-colors pointer-events-none">
@@ -783,17 +783,17 @@
     <!-- Landing Page Popup Modal -->
     <div id="landingModal" class="modal-backdrop">
         <div class="modal-card">
+            <!-- Full-width Hero Banner Image -->
+            <div class="w-full h-44 md:h-48 overflow-hidden relative flex-shrink-0">
+                <img src="assets/images/hero.png" alt="Elegant brunch setting at Café Ciel" class="w-full h-full object-cover">
+                <!-- Translucent Circular Close Button Over the Banner -->
+                <button type="button" onclick="closeLandingModal()" class="absolute top-3 right-3 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors text-sm focus:outline-none z-10" aria-label="Close dialog">✕</button>
+            </div>
             
             <!-- Main Signup Form Content -->
             <div id="modalFormContent" class="modal-scrollable-content flex flex-col gap-6">
-                <!-- Close Button -->
-                <button type="button" onclick="closeLandingModal()" class="absolute top-4 right-4 text-[#4D312C] hover:text-[#2D1E1A] opacity-60 hover:opacity-100 transition-opacity text-xl focus:outline-none" aria-label="Close dialog">✕</button>
-
                 <div class="text-center flex flex-col gap-2">
-                    <div class="flex justify-center mb-1">
-                        <img src="assets/images/hero.png" alt="Café Ciel" class="h-16 md:h-20 w-auto object-contain">
-                    </div>
-                    <h2 class="text-xl md:text-2xl font-serif tracking-wide uppercase mt-2">Exclusive Early Access</h2>
+                    <h2 class="text-xl md:text-2xl font-serif tracking-wide uppercase mt-1">Exclusive Early Access</h2>
                     <p class="text-[12.5px] opacity-75 font-light max-w-sm mx-auto leading-relaxed">
                         Join the Ciel Club to unlock limited-edition menu previews, reservation announcements, and exclusive pop-up event details.
                     </p>
