@@ -579,6 +579,28 @@
         img {
             object-fit: cover;
         }
+
+        /* ── Takeaway Menu Modal Styles ── */
+        .takeaway-modal-card {
+            background-color: #FAF5E6;
+            border: 1px solid rgba(77, 49, 44, 0.2);
+            color: #4D312C;
+            max-width: 850px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-backdrop.show .takeaway-modal-card {
+            transform: scale(1);
+        }
     </style>
 </head>
 
@@ -704,7 +726,7 @@
                         </div>
                         
                         <div class="mt-8 flex justify-center">
-                            <a href="assets/Menus%20.pdf#page=3" onclick="window.open(this.href, 'TakeawayMenu', 'width=800,height=900'); return false;" target="_blank" class="brush-btn text-white">
+                            <a href="javascript:void(0)" onclick="showTakeawayModal()" class="brush-btn text-white">
                                 <svg viewBox="0 0 500 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M 46 26 C 78 22,170 21,250 21 C 330 21,418 22,454 26 C 458 27,460 31,459 36 C 460 52,460 71,459 89 C 458 96,455 100,449 101 C 412 104,325 105,250 105 C 175 105,88 104,51 101 C 45 100,42 96,41 89 C 40 71,40 52,41 36 C 40 31,42 27,46 26 Z" fill="#4D312C" />
                                 </svg>
@@ -816,6 +838,32 @@
         </footer>
 
     </div><!-- /.flex.flex-col -->
+
+    <!-- Takeaway Menu Popup Modal -->
+    <div id="takeawayModal" class="modal-backdrop">
+        <div class="takeaway-modal-card">
+            <!-- Close Button -->
+            <button type="button" onclick="closeTakeawayModal()" class="absolute top-4 right-4 text-[#4D312C] hover:text-[#2D1E1A] opacity-60 hover:opacity-100 transition-opacity text-2xl font-bold focus:outline-none z-50 bg-[#FAF5E6]/80 backdrop-blur-sm w-10 h-10 rounded-full flex items-center justify-center shadow-sm" aria-label="Close dialog">✕</button>
+
+            <!-- Branded Logo Header Area -->
+            <div class="w-full pt-8 pb-3 px-6 flex flex-col items-center justify-center flex-shrink-0 border-b border-[#4D312C]/10">
+                <img src="assets/images/hero.png" alt="Café Ciel Logo" class="h-16 w-auto object-contain mb-2">
+                <h2 class="text-2xl font-serif tracking-wide text-[#4D312C]">Takeaway Menu</h2>
+            </div>
+            
+            <!-- Scrollable Content with Stacked Menu Pages -->
+            <div class="modal-scrollable-content flex flex-col gap-6 pt-6 pb-12 px-6 md:px-10">
+                <div class="flex flex-col gap-8 items-center">
+                    <div class="relative w-full max-w-2xl overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="assets/images/takeaway.png" alt="Café Ciel Takeaway Menu Page 1" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                    <div class="relative w-full max-w-2xl overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="assets/images/takeaway1.png" alt="Café Ciel Takeaway Menu Page 2" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Landing Page Popup Modal -->
     <div id="landingModal" class="modal-backdrop">
@@ -1039,6 +1087,35 @@
                 document.body.style.overflow = '';
             }
         }
+
+        // Takeaway Menu Modal Functions
+        function showTakeawayModal() {
+            const modal = document.getElementById('takeawayModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeTakeawayModal() {
+            const modal = document.getElementById('takeawayModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close takeaway modal if backdrop is clicked
+        document.addEventListener('DOMContentLoaded', () => {
+            const takeawayModal = document.getElementById('takeawayModal');
+            if (takeawayModal) {
+                takeawayModal.addEventListener('click', function(event) {
+                    if (event.target === this) {
+                        closeTakeawayModal();
+                    }
+                });
+            }
+        });
 
         function togglePrivacyOverlay(show) {
             const overlay = document.getElementById('privacyOverlay');
