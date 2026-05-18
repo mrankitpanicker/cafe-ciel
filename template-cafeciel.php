@@ -676,8 +676,8 @@ if (!defined('ABSPATH')) {
                     <div class="reveal flex flex-col bg-white/40 backdrop-blur-sm border border-[#4D312C]/10 rounded-2xl p-8 md:p-10 text-[#4D312C] justify-between shadow-lg">
                         <div class="flex flex-col gap-6">
                             <!-- Image at the top of the card -->
-                            <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-md bg-white/50">
-                                <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/cafe%201.jpg" class="w-full h-full object-cover img-zoom" alt="Freshly served brunch dishes at Café Ciel London">
+                            <div class="relative overflow-hidden rounded-xl aspect-[3/2] mb-4 shadow-md bg-white/50">
+                                <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/landscape2.png" class="w-full h-full object-cover img-zoom" alt="Freshly served brunch dishes at Café Ciel London">
                             </div>
                             <h3 class="font-serif text-2xl md:text-3xl tracking-wide">The Full Experience</h3>
                             
@@ -708,8 +708,8 @@ if (!defined('ABSPATH')) {
                     <div class="reveal flex flex-col bg-white/40 backdrop-blur-sm border border-[#4D312C]/10 rounded-2xl p-8 md:p-10 text-[#4D312C] justify-between shadow-lg" data-delay="0.2">
                         <div class="flex flex-col gap-6">
                             <!-- Image at the top of the card -->
-                            <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-md bg-white/50">
-                                <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/cafe%202.jpg" class="w-full h-full object-cover img-zoom" alt="Magnolia Bakery pop-up floral installation at The OWO London for Chelsea Flower Show">
+                            <div class="relative overflow-hidden rounded-xl aspect-[3/2] mb-4 shadow-md bg-white/50">
+                                <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/landscape.png" class="w-full h-full object-cover img-zoom" alt="Magnolia Bakery pop-up floral installation at The OWO London for Chelsea Flower Show">
                             </div>
                             <h3 class="font-serif text-2xl md:text-3xl tracking-wide">No Reservation Required</h3>
                             
@@ -1256,7 +1256,7 @@ if (!defined('ABSPATH')) {
         // Initialize Landing Modal
         document.addEventListener('DOMContentLoaded', () => {
             // Show the landing modal automatically on every page load to facilitate testing and review
-            setTimeout(showLandingModal, 1000); 
+            // setTimeout(showLandingModal, 1000); 
         });
 
         // Add CSS keyframe for spinner animation programmatically if not already declared
