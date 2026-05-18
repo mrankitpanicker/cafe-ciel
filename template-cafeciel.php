@@ -822,7 +822,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <div class="reveal-scale flex justify-end relative z-10">
-                    <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/popup.svg" alt="Café Ciel x Magnolia Bakery" class="h-32 md:h-64 w-auto object-contain select-none opacity-90" />
+                    <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/popup.svg" alt="Café Ciel x Magnolia Bakery" onclick="showLandingModal()" class="h-32 md:h-64 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
                 </div>
             </div>
 
@@ -1245,8 +1245,20 @@ if (!defined('ABSPATH')) {
 
         // Initialize Landing Modal
         document.addEventListener('DOMContentLoaded', () => {
-            // Show the landing modal automatically on every page load to facilitate testing and review
-            // setTimeout(showLandingModal, 1000); 
+            // Auto-open signup modal if ?signup=1 param or #signup hash is present
+            const urlParams = new URLSearchParams(window.location.search);
+            const forceSignup = urlParams.has('signup') || window.location.hash === '#signup';
+            if (forceSignup) {
+                setTimeout(showLandingModal, 800);
+            }
+
+            // Close landing modal on backdrop click
+            const landingModal = document.getElementById('landingModal');
+            if (landingModal) {
+                landingModal.addEventListener('click', function(e) {
+                    if (e.target === this) closeLandingModal();
+                });
+            }
         });
 
         // Add CSS keyframe for spinner animation programmatically if not already declared
