@@ -871,14 +871,20 @@ if (!defined('ABSPATH')) {
                 <h2 class="text-2xl font-serif tracking-wide text-[#4D312C]">Menu</h2>
             </div>
             
-            <!-- Scrollable Content with Stacked/Side-by-Side Menu Pages -->
+            <!-- Scrollable Content with 4 Menu Pages in 2x2 Grid -->
             <div class="modal-scrollable-content flex flex-col gap-6 pt-6 pb-12 px-6 md:px-10">
-                <div class="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-start">
-                    <div class="relative w-full max-w-[300px] md:max-w-[330px] overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center">
+                    <div class="relative w-full overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
                         <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/menuu.png" alt="Café Ciel Menu Page 1" class="w-full h-auto object-contain" loading="lazy">
                     </div>
-                    <div class="relative w-full max-w-[300px] md:max-w-[330px] overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                    <div class="relative w-full overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
                         <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/menuu1.png" alt="Café Ciel Menu Page 2" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                    <div class="relative w-full overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/takeaway.png" alt="Café Ciel Takeaway Menu Page 1" class="w-full h-auto object-contain" loading="lazy">
+                    </div>
+                    <div class="relative w-full overflow-hidden rounded-xl shadow-md border border-[#4D312C]/10 bg-white/50">
+                        <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/takeaway1.png" alt="Café Ciel Takeaway Menu Page 2" class="w-full h-auto object-contain" loading="lazy">
                     </div>
                 </div>
             </div>
