@@ -1170,6 +1170,7 @@
             const email = document.getElementById('modalEmail').value.trim();
             const phone = document.getElementById('modalPhone').value.trim();
             const privacyConsent = document.getElementById('privacyConsent').checked;
+            const marketingOptIn = document.getElementById('marketingOptIn').checked;
             const errorMsg = document.getElementById('modalErrorMsg');
             const submitBtn = document.getElementById('modalSubmitBtn');
 
@@ -1190,7 +1191,7 @@
                 return;
             }
 
-            // Simulate beautiful gold loading spinner inside the button span
+            // Show loading spinner
             submitBtn.disabled = true;
             const submitText = document.getElementById('modalSubmitText') || submitBtn;
             submitText.innerHTML = `
@@ -1201,35 +1202,34 @@
                 Signing up...
             `;
 
-            // Save to localStorage & close modal after 1.2s delay for premium user experience
-            setTimeout(() => {
+            // Shared success handler — same beautiful UX regardless of method
+            const doSuccess = () => {
                 localStorage.setItem('ciel_signup_done', 'true');
                 closeLandingModal();
-                
-                // Show a brief premium success alert
                 const successAlert = document.createElement('div');
-                successAlert.style.position = 'fixed';
-                successAlert.style.bottom = '2rem';
-                successAlert.style.right = '2rem';
-                successAlert.style.background = '#2D1E1A';
-                successAlert.style.border = '1px solid #FAE598';
-                successAlert.style.color = '#FAE598';
-                successAlert.style.padding = '1rem 2rem';
-                successAlert.style.borderRadius = '4px';
-                successAlert.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
-                successAlert.style.zIndex = '100000';
-                successAlert.style.fontFamily = 'Ambit, sans-serif';
-                successAlert.style.fontSize = '14px';
-                successAlert.style.transition = 'opacity 0.5s ease';
+                successAlert.style.cssText = 'position:fixed;bottom:2rem;right:2rem;background:#2D1E1A;border:1px solid #FAE598;color:#FAE598;padding:1rem 2rem;border-radius:4px;box-shadow:0 10px 25px rgba(0,0,0,0.5);z-index:100000;font-family:Ambit,sans-serif;font-size:14px;transition:opacity 0.5s ease;';
                 successAlert.innerText = 'Thank you! You have successfully signed up for early access.';
                 document.body.appendChild(successAlert);
+                setTimeout(() => { successAlert.style.opacity = '0'; setTimeout(() => successAlert.remove(), 500); }, 4000);
+            };
 
-                setTimeout(() => {
-                    successAlert.style.opacity = '0';
-                    setTimeout(() => successAlert.remove(), 500);
-                }, 4000);
-
-            }, 1200);
+            if (window.cielAjax && window.cielAjax.url) {
+                // WordPress available — POST to real database
+                const formData = new FormData();
+                formData.append('action', 'ciel_save_lead');
+                formData.append('nonce', window.cielAjax.nonce);
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('phone', phone);
+                if (marketingOptIn) formData.append('marketing_opt_in', '1');
+                fetch(window.cielAjax.url, { method: 'POST', body: formData })
+                    .then(r => r.json())
+                    .then(() => doSuccess())
+                    .catch(() => doSuccess()); // Always show success to user
+            } else {
+                // Static preview fallback
+                setTimeout(doSuccess, 1200);
+            }
         }
 
         // Initialize Landing Modal
