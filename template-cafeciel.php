@@ -822,7 +822,7 @@ if (!defined('ABSPATH')) {
                 </div>
 
                 <div class="reveal-scale flex justify-end relative z-10">
-                    <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/hero.png" alt="Café Ciel" class="h-24 md:h-48 w-auto object-contain select-none opacity-80" />
+                    <img src="assets/images/popup.svg" alt="Café Ciel x Magnolia Bakery" class="h-32 md:h-64 w-auto object-contain select-none opacity-90" />
                 </div>
             </div>
 
