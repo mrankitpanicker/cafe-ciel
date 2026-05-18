@@ -1245,11 +1245,10 @@ if (!defined('ABSPATH')) {
 
         // Initialize Landing Modal
         document.addEventListener('DOMContentLoaded', () => {
-            // Auto-open signup modal if ?signup=1 param or #signup hash is present
-            const urlParams = new URLSearchParams(window.location.search);
-            const forceSignup = urlParams.has('signup') || window.location.hash === '#signup';
-            if (forceSignup) {
-                setTimeout(showLandingModal, 800);
+            // Auto-show signup popup on every page load (unless already submitted)
+            const alreadySubmitted = localStorage.getItem('ciel_landing_submitted');
+            if (!alreadySubmitted) {
+                setTimeout(showLandingModal, 1000);
             }
 
             // Close landing modal on backdrop click
