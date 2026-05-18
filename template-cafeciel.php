@@ -701,7 +701,14 @@ if (!defined('ABSPATH')) {
                             </div>
                         </div>
                         
-
+                        <div class="mt-8 flex justify-center">
+                            <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank" class="brush-btn text-white">
+                                <svg viewBox="0 0 500 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M 46 26 C 78 22,170 21,250 21 C 330 21,418 22,454 26 C 458 27,460 31,459 36 C 460 52,460 71,459 89 C 458 96,455 100,449 101 C 412 104,325 105,250 105 C 175 105,88 104,51 101 C 45 100,42 96,41 89 C 40 71,40 52,41 36 C 40 31,42 27,46 26 Z" fill="#4D312C" />
+                                </svg>
+                                <span class="tracking-[0.15em] font-bold text-[12px] md:text-sm">Book a Table</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Right Card: No Reservation Required -->
@@ -811,20 +818,7 @@ if (!defined('ABSPATH')) {
                         </div>
                     </div>
 
-                    <div class="w-fit">
-                        <a href="https://www.sevenrooms.com/explore/cafeciel/reservations/create/search/" target="_blank" class="brush-btn no-overlay text-[#FAE598] footer-btn">
-                            <svg viewBox="0 0 500 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M 46 26 C 78 22,170 21,250 21 C 330 21,418 22,454 26 C 458 27,460 31,459 36 C 460 52,460 71,459 89 C 458 96,455 100,449 101 C 412 104,325 105,250 105 C 175 105,88 104,51 101 C 45 100,42 96,41 89 C 40 71,40 52,41 36 C 40 31,42 27,46 26 Z"
-                                    fill="#4D312C" />
-                                <path
-                                    d="M 46 26 C 78 22,170 21,250 21 C 330 21,418 22,454 26 C 458 27,460 31,459 36 C 460 52,460 71,459 89 C 458 96,455 100,449 101 C 412 104,325 105,250 105 C 175 105,88 104,51 101 C 45 100,42 96,41 89 C 40 71,40 52,41 36 C 40 31,42 27,46 26 Z"
-                                    fill="none" stroke="#5B3A34" stroke-width="5" opacity="0.65" />
-                            </svg>
-                            <!-- Was Caveat large script → Ambit Light Italic -->
-                            <span class="font-script text-4xl lowercase">book</span>
-                        </a>
-                    </div>
+
                 </div>
 
                 <div class="reveal-scale flex justify-end relative z-10">
