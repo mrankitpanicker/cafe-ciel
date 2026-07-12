@@ -404,6 +404,27 @@ if (!defined('ABSPATH')) {
             scrollbar-color: rgba(45, 30, 26, 0.2) transparent;
         }
 
+        /* ── Hide the custom café ciel popup elements ── */
+        #ccCollabModal,
+        .cc-collab-modal-backdrop,
+        .cc-collab-modal-card,
+        .cc-collab-close,
+        .cc-collab-text,
+        .cc-collab-btn,
+        button[onclick="closeCcCollabModal()"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Target and hide the outer container divs housing them */
+        div:has(> button.cc-collab-close),
+        div:has(> a.cc-collab-btn) {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
         /* ── Landing Page Popup Modal Styles ── */
         .modal-backdrop {
             position: fixed;
