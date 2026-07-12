@@ -821,9 +821,7 @@ if (!defined('ABSPATH')) {
 
                 </div>
 
-                <div class="reveal-scale flex justify-end relative z-10">
-                    <img src="https://mrankitpanicker.github.io/cafe-ciel/assets/images/popup.svg" alt="Café Ciel x Magnolia Bakery" onclick="showLandingModal()" class="h-32 md:h-64 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity cursor-pointer" />
-                </div>
+
             </div>
 
             <div class="absolute -bottom-20 -right-20 pointer-events-none opacity-5">
@@ -1171,11 +1169,14 @@ if (!defined('ABSPATH')) {
 
         function togglePrivacyOverlay(show) {
             const overlay = document.getElementById('privacyOverlay');
+            const modal = document.getElementById('landingModal');
             if (overlay) {
                 if (show) {
+                    if (modal) modal.classList.add('show');
                     overlay.classList.add('show');
                 } else {
                     overlay.classList.remove('show');
+                    if (modal) modal.classList.remove('show');
                 }
             }
         }
@@ -1251,11 +1252,7 @@ if (!defined('ABSPATH')) {
 
         // Initialize Landing Modal
         document.addEventListener('DOMContentLoaded', () => {
-            // Auto-show signup popup on every page load (unless already submitted)
-            const alreadySubmitted = localStorage.getItem('ciel_landing_submitted');
-            if (!alreadySubmitted) {
-                setTimeout(showLandingModal, 1000);
-            }
+            // Auto-show signup popup disabled
 
             // Close landing modal on backdrop click
             const landingModal = document.getElementById('landingModal');

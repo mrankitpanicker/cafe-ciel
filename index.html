@@ -810,9 +810,7 @@
 
                 </div>
 
-                <div class="reveal-scale flex justify-end relative z-10">
-                    <img src="assets/images/popup.svg" alt="Café Ciel x Magnolia Bakery" class="h-32 md:h-64 w-auto object-contain select-none opacity-90" />
-                </div>
+
             </div>
 
             <div class="absolute -bottom-20 -right-20 pointer-events-none opacity-5">
@@ -1154,11 +1152,14 @@
 
         function togglePrivacyOverlay(show) {
             const overlay = document.getElementById('privacyOverlay');
+            const modal = document.getElementById('landingModal');
             if (overlay) {
                 if (show) {
+                    if (modal) modal.classList.add('show');
                     overlay.classList.add('show');
                 } else {
                     overlay.classList.remove('show');
+                    if (modal) modal.classList.remove('show');
                 }
             }
         }
